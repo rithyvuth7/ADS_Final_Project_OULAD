@@ -1,0 +1,7 @@
+monitor,what is measured,how often,alert level,action
+Input drift,PSI of each model input against the training year,weekly during a presentation,"0.10 moderate, 0.25 major","Inspect the feature and the upstream system; if major, review before trusting alerts"
+Score drift,PSI of the predicted-risk distribution,weekly,above 0.10,Check module mix and data feeds
+Missing data,"share missing for each input, per module",weekly,twice the training-year share,Pipeline fault or a coding change (like the 100-or-1 assessment)
+New categories,"unseen modules, assessment codes, score ranges",each new presentation,any,Validate definitions before scoring
+Calibration,"mean predicted risk against observed risk, by module",when outcomes arrive (end of presentation),gap above 3 points,Recalibrate (intercept shift) or retrain
+Performance,"AUC and recall at the flagged share, overall and per group",end of each presentation,"AUC down more than 0.03, or any group recall gap up more than 0.05",Retrain on the latest complete years

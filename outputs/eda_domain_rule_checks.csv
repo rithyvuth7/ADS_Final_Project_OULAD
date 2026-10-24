@@ -1,0 +1,13 @@
+rule,violations,pct
+clicks_total >= 0,0,0.0
+clicks_w1..w4 + prestart sum to clicks_total,0,0.0
+active_days <= 53 (days -25..27 exist in the log),0,0.0
+"first_click_day within [-25, 27]",0,0.0
+"mean_score_early within [0, 100]",0,0.0
+"submit_rate_early within [0, 1]",0,0.0
+n_due_submitted <= n_assess_submitted,0,0.0
+n_due_submitted <= n_assess_due,0,0.0
+studied_credits is a multiple of 30,453,1.644104090298697
+studied_credits <= 360 (three full-time years),3,0.010888106558269517
+no_vle_activity consistent with clicks_total == 0,0,0.0
+clicks on days where active_days == 0,0,0.0

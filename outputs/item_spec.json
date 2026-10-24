@@ -1,0 +1,37 @@
+{
+  "spec": {
+    "score_tertile_cuts": [
+      0.3371369953894442,
+      0.6492652745552978
+    ],
+    "forum_rank_cut": 0.667,
+    "early_days_cut": 7,
+    "light_credits": 60,
+    "medium_credits": 120
+  },
+  "min_support": 0.02,
+  "max_len": 4,
+  "improvement": 0.03,
+  "min_antecedent_n": 150,
+  "min_lift": 1.25,
+  "support_list_rules_precision_70": [
+    "EarlyAssessment=MissedSome",
+    "Education=BelowALevel AND Profile=Low",
+    "EarlyScore=Low AND Module=DDD",
+    "Deprivation=Deprived AND EarlyScore=Low AND Education=BelowALevel",
+    "Deprivation=Deprived AND Profile=Low",
+    "Age=Under35 AND Education=BelowALevel AND PriorAttempts=1plus",
+    "Profile=NoActivity",
+    "PriorAttempts=1plus AND Profile=Low"
+  ],
+  "support_list_rules_precision_60": [
+    "Profile=Low",
+    "Deprivation=Deprived AND Education=BelowALevel",
+    "EarlyAssessment=MissedSome",
+    "EarlyScore=Low AND Education=BelowALevel",
+    "PriorAttempts=1plus",
+    "Deprivation=Deprived AND EarlyScore=Low",
+    "EarlyScore=Low AND Module=DDD",
+    "Profile=NoActivity"
+  ]
+}

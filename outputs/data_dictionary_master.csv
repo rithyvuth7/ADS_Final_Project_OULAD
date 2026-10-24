@@ -1,0 +1,47 @@
+variable,meaning_unit,type_scale,role,valid_values,quality_notes
+code_module,Course module code,Categorical; nominal,Key / context,AAA to GGG (7),Part of the unit key
+code_presentation,Presentation: year + B (Feb) or J (Oct),Categorical; nominal,Key / context,"2013B, 2013J, 2014B, 2014J",Used for the temporal split
+id_student,Anonymised student id,Identifier,Identifier,integer,Never a feature; one person can appear in several presentations
+gender,Declared gender,Categorical; nominal,Predictor / fairness group,"M, F",
+region,Region of residence during the presentation,Categorical; nominal,Predictor,13 UK regions,High cardinality for rare-event models; check group sizes
+highest_education,Highest education on entry,Categorical; ordinal,Predictor / fairness group,5 levels,"Rare levels: No Formal quals, Post Graduate"
+edu_level,Ordinal code of highest_education,Numerical; ordinal,Predictor,0 to 4,0 = No Formal quals
+imd_band,Index of Multiple Deprivation band of residence,Categorical; ordinal,Predictor / fairness group,0-10 to 90-100,Labels harmonised (23696 rows); missing kept
+imd_order,Ordinal code of imd_band,Numerical; ordinal,Predictor,0 to 9,0 = most deprived; missing kept as NaN
+imd_missing,Flag: imd_band missing,Binary,Predictor,0/1,Missingness may be informative
+age_band,Age band,Categorical; ordinal,Predictor / fairness group,"0-35, 35-55, 55<=",55<= is very small
+age_order,Ordinal code of age_band,Numerical; ordinal,Predictor,0 to 2,
+disability,Declared disability,Binary,Predictor / fairness group,"Y, N",Sensitive attribute
+num_of_prev_attempts,Previous attempts at this module,Numerical; count,Predictor,0 to 6,Heavily right-skewed; most are 0
+studied_credits,Credits being studied across modules,Numerical; ratio,Predictor,30 to 655,Long right tail; verify very large values in notebook 03
+date_registration,Days from presentation start to registration (negative = before start),Numerical; interval,Predictor,integer,Few missing; reg_date_missing flag
+reg_date_missing,Flag: date_registration missing,Binary,Predictor,0/1,
+late_registrant,Registered on or after day 28,Binary,Predictor,0/1,"Very few students, little early data"
+year,Presentation year,Numerical; interval,Context / split,"2013, 2014",
+start_term,B (February) or J (October) start,Categorical; nominal,Context,"B, J",
+cohort_order,Chronological order of presentation,Numerical; ordinal,Split variable,0 to 3,Used for temporal train/test split
+module_presentation_length,Length of the presentation in days,Numerical; ratio,Context,234 to 269,
+clicks_total,Total VLE clicks before day 28,Numerical; count,Predictor,>= 0,Heavily right-skewed; consider log transform
+active_days,Distinct days with at least one click before day 28,Numerical; count,Predictor,0 to 53,Includes pre-start days
+n_sites,Distinct VLE materials used,Numerical; count,Predictor,>= 0,
+first_click_day,Day of the first click (negative = before start),Numerical; interval,Predictor,integer,Missing when the student has no clicks
+clicks_prestart,Clicks in period/activity 'prestart',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_w1,Clicks in period/activity 'w1',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_w2,Clicks in period/activity 'w2',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_w3,Clicks in period/activity 'w3',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_w4,Clicks in period/activity 'w4',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_forumng,Clicks in period/activity 'forumng',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_homepage,Clicks in period/activity 'homepage',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_other,Clicks in period/activity 'other',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_oucontent,Clicks in period/activity 'oucontent',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_quiz,Clicks in period/activity 'quiz',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_resource,Clicks in period/activity 'resource',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+clicks_subpage,Clicks in period/activity 'subpage',Numerical; count,Predictor,>= 0,Right-skewed; periods and types each sum to clicks_total
+no_vle_activity,Flag: no clicks at all before cutoff,Binary,Predictor,0/1,True zero activity
+n_assess_due,Assessments scheduled to be due before the cutoff (module level),Numerical; count,Context,0 to several,Zero for modules with no early assessment
+n_assess_submitted,Assessments submitted before the cutoff (excludes banked),Numerical; count,Predictor,>= 0,
+n_due_submitted,Submitted before the cutoff among those due before it,Numerical; count,Predictor,>= 0,
+submit_rate_early,n_due_submitted / n_assess_due,Numerical; ratio,Predictor,0 to 1,Missing when nothing was due
+mean_score_early,Mean score of early submissions,Numerical; interval,Predictor,0 to 100,Missing when nothing submitted; do not impute with a mean before the split
+target_final_result,Final course result (label source only),Categorical; nominal,Target source,"Distinction, Pass, Fail, Withdrawn",Never a feature
+target_at_risk,"1 if Fail or Withdrawn, else 0",Binary,Target,0/1,Positive class is the focus; check imbalance

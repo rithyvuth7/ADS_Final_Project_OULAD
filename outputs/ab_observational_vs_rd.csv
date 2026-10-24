@@ -1,0 +1,4 @@
+,true effect of contact,estimate (mean of 300 simulated worlds),sd of estimate,students used
+naive: contacted (flagged) vs not contacted,-0.05,0.36202111756476235,0.007804086342755354,15735
+"regression discontinuity, bandwidth 0.03",-0.05,-0.04573762363842441,0.06277368070644168,979
+"regression discontinuity, bandwidth 0.06",-0.05,-0.04678029199211828,0.04805147792932283,1953

@@ -1,0 +1,7 @@
+leak,AUC inflation,caught by a train/test split?,prevention
+Future information (clicks after day 28),0.02756585267492684,No: the leak is in the test data too,Timeline audit: record when each field becomes known
+Future information (late scores),0.0792990960626101,No,Cut every source table at the prediction day
+Future information (left by day 56),0.014414325948609696,No,Never use outcome-derived fields (the label in disguise)
+Random-row split instead of temporal,0.008901621680421634,Partly,Split by time and by student
+Target encoding on all rows,0.1754730946282067,No (inside the training data),Encode out-of-fold with smoothing
+Feature screening before CV (noise),0.14940723875323852,No,Put every fitted step inside the CV pipeline

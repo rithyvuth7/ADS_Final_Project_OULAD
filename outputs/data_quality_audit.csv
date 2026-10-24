@@ -1,0 +1,15 @@
+area,variable,finding,consequence_for_validity,action
+Missingness,"mean_score_early, submit_rate_early",28.2% and 18.1% missing; modules EEE and GGG have no early assessment,Rows with missing scores are two whole modules; imputing would invent marks,Keep; add has_early_score; impute only in pipelines after the split
+Missingness,imd_band,"1,029 missing (3.7%); at-risk 29.1% vs 44.7%",Not missing at random: the gap in outcome rate is large,Keep imd_missing flag; no deletion
+Invalid values,all engineered features,0 violations of 12 domain rules; studied_credits not a multiple of 30 for 453 rows,Credit oddities cannot be verified from the documentation,Keep; cap studied_credits at 360 for linear and distance-based methods
+Inconsistent coding,mean_score_early (BBB 2014J assessment 15020),scores are only 100 or 1 (717 submissions scored 1); 671 students have an early mean of exactly 1,A completion code is averaged as if it were a mark; distorts scores for BBB students,Rebuild early scores with within-assessment percentile ranks in notebook 04; treat this assessment as binary
+Duplicates,studentVle exact duplicates,6.2% of window rows,"Could inflate engagement; checked: rank order identical (Spearman 0.9996), AUC unchanged",Keep summed clicks
+Keys,student-presentation key,"unique; 2,583 people appear in more than one presentation",Rows are not fully independent; a random split would leak a person across train and test,Temporal split plus grouped CV by id_student
+Outliers,"clicks_total, weekly clicks","6.1% above the IQR fence; max 7,570","Heavy but plausible study patterns, extreme skew (3.5 to 6.0)",Keep; log1p for symmetric-input methods
+Outliers,"studied_credits, num_of_prev_attempts",3 rows above 360 credits; prev attempts IQR=0 flags 12.6% by artefact,Artefact of discrete variables and rare large loads,Cap at 360 and 3+ respectively
+Rare categories,"highest_education, age_band","No formal quals 0.9%, Postgraduate 1.0%, age 55+ 0.7%",Very wide intervals for these levels,"Use ordinal codes; merge only for association analysis, and document it"
+Near-zero variance,"reg_date_missing, late_registrant",constant for more than 99.9% of rows,No information,Drop from model features
+Imbalance,"target_at_risk, target_final_result","binary 44% / 56%; four outcomes Distinction 11%, Withdrawn 19%, Fail 26%, Pass 45%",Binary target is nearly balanced; imbalance appears per module and in the four-way outcome,Report per-module metrics; consider per-outcome models in notebook 07
+Leakage,all features,no post-outcome field; maximum |rho| with target is 0.33,No leakage alarm,Keep the day-28 cutoff rule
+Unknown exit time,93 Withdrawn students without exit date,22.6% have no VLE activity; 0.34% of population,Probably left before day 28; effect on results is negligible,Keep; robustness run in notebook 07
+Privacy and fairness,"gender, disability, age, IMD, region, education",sensitive or socio-economic attributes,Models could reproduce inequality,Group-wise error reporting; with/without comparison

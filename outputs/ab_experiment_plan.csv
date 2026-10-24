@@ -1,0 +1,13 @@
+element,decision
+Question,Does proactive tutor outreach to flagged students reduce the share who end the presentation at risk?
+Population,"Students in the top 30% of predicted risk at day 28 (alert model without socio-economic features), all modules"
+Unit of randomisation,Student; stratified by module-presentation and by risk tercile. Randomise by tutor group instead if tutors would treat both arms (contamination)
+Arms,A: usual support (no extra contact). B: structured outreach within one week of the alert. 1:1 allocation
+Primary outcome,Ends the presentation at risk (Fail or Withdrawn). Analysis: difference in proportions with a confidence interval; adjusted analysis as a pre-specified secondary
+Secondary outcomes,"Submission of the next assessment (known by day 56), final score of passers, withdrawal alone. Multiple secondaries are corrected (Benjamini-Hochberg)"
+Guardrails,"Complaints or opt-outs, workload per tutor, outcomes of the unflagged students (spillover), outcome gaps between deprivation groups"
+Sample size,"4,721 flagged students per year give 2,360 per arm: detects a 3.7 point reduction at 80% power. A median module alone could only detect 10 points and a module-presentation 13 points, so pool the modules, run several presentations, and treat modules as exploratory"
+Duration and timing,Outcome known at the end of the presentation (about 8 months); interim look at day 56 on the next-assessment outcome only; no early stopping on the primary outcome without a pre-set alpha-spending rule
+Analysis plan,"Intention to treat. Pre-registered subgroups: deprivation band and module (exploratory, with interaction tests). No peeking-based decisions"
+Ethics,"Control students keep the usual support and receive outreach after the trial if it works (delayed rollout). Contact is supportive, not a label; data minimised; students informed"
+Threats,"Contamination between arms, tutor differences, novelty effect, model drift during the trial (monitor inputs, see 07b), and alerts that change student behaviour before outreach"

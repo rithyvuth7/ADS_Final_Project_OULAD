@@ -1,0 +1,21 @@
+{
+  "k": 3,
+  "features": [
+    "eng_pct_poststart_days",
+    "eng_pct_sites",
+    "eng_pct_clicks",
+    "rel_max_gap_poststart",
+    "rel_trend_slope",
+    "rel_prestart_share",
+    "rel_log_clicks_per_active_day",
+    "rel_share_forumng",
+    "rel_share_oucontent",
+    "rel_share_homepage",
+    "rel_share_quiz",
+    "rel_share_subpage"
+  ],
+  "pca_components": 7,
+  "covariance_type": "full",
+  "fit_students": 11361,
+  "random_state": 42
+}

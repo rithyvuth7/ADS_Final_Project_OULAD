@@ -1,0 +1,41 @@
+{
+  "primary": "hgb",
+  "logit_params": {
+    "C": 0.1
+  },
+  "hgb_params": {
+    "depth": 4,
+    "lr": 0.03,
+    "iters": 300,
+    "l2": 3.0,
+    "leaf": 40
+  },
+  "selected_numeric": [
+    "eng_pct_poststart_days",
+    "score_pct_mean",
+    "submit_rate_early",
+    "eng_pct_sites",
+    "days_before_due_mean",
+    "share_subpage",
+    "eng_pct_clicks",
+    "edu_level",
+    "credits_capped",
+    "imd_order",
+    "log_clicks_w2",
+    "num_prev_capped",
+    "log_clicks_total",
+    "trend_slope",
+    "n_submitted_after_due",
+    "log_clicks_w1",
+    "module_presentation_length"
+  ],
+  "selected_categorical": [
+    "code_module"
+  ],
+  "flag_policy": "top 30% of predicted risk",
+  "cv_auc": {
+    "logit": 0.7838238512894115,
+    "hgb": 0.7928475089734901,
+    "interaction": 0.7859442918665586
+  }
+}
