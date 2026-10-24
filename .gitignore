@@ -1,0 +1,7 @@
+# Large raw files: download them again (see README, "Reproduce")
+data/raw/studentVle.csv
+data/raw/oulad_uci.zip
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
