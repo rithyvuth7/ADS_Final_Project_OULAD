@@ -38,7 +38,7 @@ outputs/         transformation log, data dictionary, figures
 1. Python 3.13 with: pandas 2.3.2, numpy 2.2.6, scipy 1.16.3, scikit-learn 1.8.0, matplotlib 3.10.6, statsmodels 0.14.6, jupyter (nbclient 0.11.0, nbformat 5.11.0)
    Notebook 06 also needs `mlxtend` 0.23.4 (newer versions pull in pandas 3 and numpy 2.5, which this project was not built on). Correspondence analysis is implemented directly with numpy, so `prince` is not needed.
    Shared item definitions for the rules are in `src/items.py` (notebooks add `../src` to the path). Notebook 07 may use `imbalanced-learn` (optional).
-2. Put the 7 OULAD CSVs in `data/raw/`.
+2. Put the 7 OULAD CSVs in `data/raw/`. The two largest raw files (`studentVle.csv`, 422 MB, and `oulad_uci.zip`) are not in this repository because GitHub rejects files over 100 MB. Download the dataset from the UCI Machine Learning Repository (dataset 349, Open University Learning Analytics Dataset) and unzip it into `data/raw/`. The other raw CSVs are already included.
 3. Run notebooks in order from the `notebooks/` folder (paths are relative to it).
    `studentVle.csv` has 10.6M rows; notebook 02 uses about 1 GB of RAM at peak.
 4. Key parameter: `CUTOFF_DAY = 28` in notebook 02. Change it and rerun to get another prediction time.
